@@ -22,9 +22,22 @@ const { NotImplementedError } = require('../extensions/index.js');
  *   }
  * }
  */
-function removeKFromList(/* l, k */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+//Дан односвязный список целых чисел l и целого числа k. Удалите из списка l все элементы, значение которых равно k.
+
+function removeKFromList(node, k) {
+  // Удаляем все узлы со значением k в начале списка
+  while (node && node.value === k) {
+    node = node.next;
+  }
+  let current = node;
+  while (current && current.next) {
+    if (current.next.value === k) {
+      current.next = current.next.next;
+    } else {
+      current = current.next;
+    }
+  }
+  return node;
 }
 
 module.exports = {
